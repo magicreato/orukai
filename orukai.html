@@ -1,1 +1,163 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orukai Services | </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .drawer-transition { transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1); }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-[#F3F4F6] text-[#1A1C1E]">
+
+    <!-- HERO SECTION -->
+    <header class="p-8 pb-6 bg-white rounded-b-[40px] shadow-sm">
+        <div class="flex items-center gap-2 mb-6">
+            <div class="w-8 h-8 bg-blue-600 rounded-xl flex items-center justify-center">
+                <i data-lucide="map-pin" class="w-4 h-4 text-white"></i>
+            </div>
+            <span class="font-bold text-sm">Kattoor, Kerala</span>
+        </div>
+        <h1 class="text-3xl font-extrabold tracking-tight mb-6">What do you need help with <span class="text-blue-600">today?</span></h1>
+        
+        <!-- SEARCH BAR -->
+        <div class="bg-gray-100 rounded-2xl p-4 flex items-center gap-3 border border-gray-200">
+            <i data-lucide="search" class="w-5 h-5 text-gray-400"></i>
+            <input type="text" placeholder="Search for services..." class="bg-transparent border-none outline-none text-sm w-full font-medium">
+        </div>
+    </header>
+
+    <!-- SERVICE CATEGORIES -->
+    <main class="p-6 space-y-8 pb-32">
+        
+        <!-- CATEGORY: HOME ESSENTIALS -->
+        <div>
+            <h2 class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4 ml-2">Home Essentials</h2>
+            <div class="grid grid-cols-2 gap-4" id="home-essentials"></div>
+        </div>
+
+        <!-- CATEGORY: OUTDOOR & FARM -->
+        <div>
+            <h2 class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4 ml-2">Outdoor & Farm</h2>
+            <div class="grid grid-cols-2 gap-4" id="outdoor-farm"></div>
+        </div>
+
+        <!-- CATEGORY: TECH & TRAVEL -->
+        <div>
+            <h2 class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4 ml-2">Tech & Travel</h2>
+            <div class="grid grid-cols-2 gap-4" id="tech-travel"></div>
+        </div>
+
+    </main>
+
+    <!-- THE 3-TAP DRAWER -->
+    <div id="overlay" class="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 hidden" onclick="closeDrawer()"></div>
+    
+    <div id="drawer" class="fixed bottom-0 left-0 right-0 bg-white rounded-t-[40px] z-50 p-8 drawer-transition translate-y-full">
+        <div class="w-12 h-1 bg-gray-200 rounded-full mx-auto mb-8"></div>
+        
+        <div class="mb-6">
+            <span id="drawer-cat" class="text-xs font-bold text-blue-600 uppercase tracking-widest"></span>
+            <h2 id="drawer-title" class="text-2xl font-extrabold mt-1">Book Service</h2>
+        </div>
+
+        <form id="booking-form" class="space-y-4">
+            <div class="grid grid-cols-2 gap-3">
+                <div class="space-y-1">
+                    <label class="text-[10px] font-bold text-gray-400 ml-2 uppercase">When?</label>
+                    <input type="date" id="book-date" required class="w-full p-4 bg-gray-50 rounded-2xl font-semibold outline-none border-none focus:ring-2 focus:ring-blue-600">
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[10px] font-bold text-gray-400 ml-2 uppercase">Time</label>
+                    <select id="book-time" required class="w-full p-4 bg-gray-50 rounded-2xl font-semibold outline-none border-none focus:ring-2 focus:ring-blue-600">
+                        <option value="Morning">Morning</option>
+                        <option value="Afternoon">Afternoon</option>
+                        <option value="Evening">Evening</option>
+                    </select>
+                </div>
+            </div>
+
+            <input type="text" id="user-name" placeholder="Your Name" required class="w-full p-4 bg-gray-50 rounded-2xl font-semibold outline-none border-none focus:ring-2 focus:ring-blue-600">
+            <input type="tel" id="user-phone" placeholder="WhatsApp Number" required class="w-full p-4 bg-gray-50 rounded-2xl font-semibold outline-none border-none focus:ring-2 focus:ring-blue-600">
+
+            <button type="submit" class="w-full bg-blue-600 text-white font-extrabold p-5 rounded-[24px] shadow-lg shadow-blue-200 flex items-center justify-center gap-3 active:scale-95 transition-transform">
+                Get Quotation <i data-lucide="chevron-right" class="w-5 h-5"></i>
+            </button>
+        </form>
+    </div>
+
+    <script>
+        const categories = {
+            'home-essentials': [
+                { name: 'Plumber', icon: 'wrench', color: 'bg-blue-50 text-blue-600' },
+                { name: 'Electrician', icon: 'zap', color: 'bg-orange-50 text-orange-600' },
+                { name: 'Painter', icon: 'palette', color: 'bg-purple-50 text-purple-600' },
+                { name: 'Carpenter', icon: 'hammer', color: 'bg-amber-700/10 text-amber-700' }
+            ],
+            'outdoor-farm': [
+                { name: 'Coconut Harvest', icon: 'palmtree', color: 'bg-emerald-50 text-emerald-600' },
+                { name: 'Grass Cutting', icon: 'scissors', color: 'bg-lime-50 text-lime-600' },
+                { name: 'Tree Cutting', icon: 'tree-pine', color: 'bg-green-50 text-green-700' }
+            ],
+            'tech-travel': [
+                { name: 'Desktop Repair', icon: 'monitor', color: 'bg-indigo-50 text-indigo-600' },
+                { name: 'Pickup & Drop', icon: 'truck', color: 'bg-red-50 text-red-600' },
+                { name: 'Travel Package', icon: 'briefcase', color: 'bg-sky-50 text-sky-600' }
+            ]
+        };
+
+        let selectedService = "";
+
+        // RENDER GRID
+        Object.keys(categories).forEach(catId => {
+            const container = document.getElementById(catId);
+            categories[catId].forEach(s => {
+                const div = document.createElement('div');
+                div.className = "bg-white p-6 rounded-[32px] border border-gray-100 flex flex-col items-center justify-center shadow-sm active:scale-95 transition-all cursor-pointer";
+                div.onclick = () => openDrawer(s.name, catId);
+                div.innerHTML = `
+                    <div class="p-4 rounded-2xl mb-3 ${s.color}">
+                        <i data-lucide="${s.icon}" class="w-6 h-6"></i>
+                    </div>
+                    <span class="font-bold text-sm text-center">${s.name}</span>
+                `;
+                container.appendChild(div);
+            });
+        });
+
+        // DRAWER LOGIC
+        function openDrawer(name, cat) {
+            selectedService = name;
+            document.getElementById('drawer-title').innerText = name;
+            document.getElementById('drawer-cat').innerText = cat.replace('-', ' ');
+            document.getElementById('drawer').classList.remove('translate-y-full');
+            document.getElementById('overlay').classList.remove('hidden');
+        }
+
+        function closeDrawer() {
+            document.getElementById('drawer').classList.add('translate-y-full');
+            document.getElementById('overlay').classList.add('hidden');
+        }
+
+        // FORM SUBMISSION
+        document.getElementById('booking-form').onsubmit = (e) => {
+            e.preventDefault();
+            const date = document.getElementById('book-date').value;
+            const time = document.getElementById('book-time').value;
+            const name = document.getElementById('user-name').value;
+            
+            // This is where Supabase integration goes next!
+            alert(`Tap 3 Success! Request for ${selectedService} on ${date} ${time} sent.`);
+            closeDrawer();
+        };
+
+        lucide.createIcons();
+    </script>
+</body>
+</html>
