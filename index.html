@@ -1,17 +1,28 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orukai Services | </title>
+    <title>Orukai Services | Labour Supply Startup</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Orukai Services - Your trusted partner for labour supply solutions. We provide skilled professionals for home essentials, outdoor & farm, and tech & travel needs in Kerala.">
+    <meta name="keywords" content="labour supply, home services, outdoor services, tech services, Kerala, skilled professionals, Orukai">
+    <meta name="author" content="Orukai Services">
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Fonts and Custom Styles -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
         .drawer-transition { transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1); }
         .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hover-effect:hover { transform: scale(1.05); transition: transform 0.3s ease-in-out; }
     </style>
 </head>
 <body class="bg-[#F3F4F6] text-[#1A1C1E]">
@@ -20,16 +31,17 @@
     <header class="p-8 pb-6 bg-white rounded-b-[40px] shadow-sm">
         <div class="flex items-center gap-2 mb-6">
             <div class="w-8 h-8 bg-blue-600 rounded-xl flex items-center justify-center">
-                <i data-lucide="map-pin" class="w-4 h-4 text-white"></i>
+                <i data-lucide="map-pin" class="w-4 h-4 text-white" aria-hidden="true"></i>
             </div>
             <span class="font-bold text-sm">Kattoor, Kerala</span>
         </div>
         <h1 class="text-3xl font-extrabold tracking-tight mb-6">What do you need help with <span class="text-blue-600">today?</span></h1>
+        <p class="text-gray-500 text-sm mb-6">Orukai Services connects you with skilled professionals for all your needs. From home essentials to outdoor and tech services, we’ve got you covered!</p>
         
         <!-- SEARCH BAR -->
         <div class="bg-gray-100 rounded-2xl p-4 flex items-center gap-3 border border-gray-200">
-            <i data-lucide="search" class="w-5 h-5 text-gray-400"></i>
-            <input type="text" placeholder="Search for services..." class="bg-transparent border-none outline-none text-sm w-full font-medium">
+            <i data-lucide="search" class="w-5 h-5 text-gray-400" aria-hidden="true"></i>
+            <input type="text" placeholder="Search for services..." class="bg-transparent border-none outline-none text-sm w-full font-medium" aria-label="Search for services">
         </div>
     </header>
 
@@ -71,11 +83,11 @@
             <div class="grid grid-cols-2 gap-3">
                 <div class="space-y-1">
                     <label class="text-[10px] font-bold text-gray-400 ml-2 uppercase">When?</label>
-                    <input type="date" id="book-date" required class="w-full p-4 bg-gray-50 rounded-2xl font-semibold outline-none border-none focus:ring-2 focus:ring-blue-600">
+                    <input type="date" id="book-date" required class="w-full p-4 bg-gray-50 rounded-2xl font-semibold outline-none border-none focus:ring-2 focus:ring-blue-600" aria-label="Select booking date">
                 </div>
                 <div class="space-y-1">
                     <label class="text-[10px] font-bold text-gray-400 ml-2 uppercase">Time</label>
-                    <select id="book-time" required class="w-full p-4 bg-gray-50 rounded-2xl font-semibold outline-none border-none focus:ring-2 focus:ring-blue-600">
+                    <select id="book-time" required class="w-full p-4 bg-gray-50 rounded-2xl font-semibold outline-none border-none focus:ring-2 focus:ring-blue-600" aria-label="Select booking time">
                         <option value="Morning">Morning</option>
                         <option value="Afternoon">Afternoon</option>
                         <option value="Evening">Evening</option>
@@ -83,11 +95,11 @@
                 </div>
             </div>
 
-            <input type="text" id="user-name" placeholder="Your Name" required class="w-full p-4 bg-gray-50 rounded-2xl font-semibold outline-none border-none focus:ring-2 focus:ring-blue-600">
-            <input type="tel" id="user-phone" placeholder="WhatsApp Number" required class="w-full p-4 bg-gray-50 rounded-2xl font-semibold outline-none border-none focus:ring-2 focus:ring-blue-600">
+            <input type="text" id="user-name" placeholder="Your Name" required class="w-full p-4 bg-gray-50 rounded-2xl font-semibold outline-none border-none focus:ring-2 focus:ring-blue-600" aria-label="Enter your name">
+            <input type="tel" id="user-phone" placeholder="WhatsApp Number" required class="w-full p-4 bg-gray-50 rounded-2xl font-semibold outline-none border-none focus:ring-2 focus:ring-blue-600" aria-label="Enter your WhatsApp number">
 
             <button type="submit" class="w-full bg-blue-600 text-white font-extrabold p-5 rounded-[24px] shadow-lg shadow-blue-200 flex items-center justify-center gap-3 active:scale-95 transition-transform">
-                Get Quotation <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                Get Quotation <i data-lucide="chevron-right" class="w-5 h-5" aria-hidden="true"></i>
             </button>
         </form>
     </div>
@@ -119,11 +131,11 @@
             const container = document.getElementById(catId);
             categories[catId].forEach(s => {
                 const div = document.createElement('div');
-                div.className = "bg-white p-6 rounded-[32px] border border-gray-100 flex flex-col items-center justify-center shadow-sm active:scale-95 transition-all cursor-pointer";
+                div.className = "bg-white p-6 rounded-[32px] border border-gray-100 flex flex-col items-center justify-center shadow-sm active:scale-95 transition-all cursor-pointer hover-effect";
                 div.onclick = () => openDrawer(s.name, catId);
                 div.innerHTML = `
                     <div class="p-4 rounded-2xl mb-3 ${s.color}">
-                        <i data-lucide="${s.icon}" class="w-6 h-6"></i>
+                        <i data-lucide="${s.icon}" class="w-6 h-6" aria-hidden="true"></i>
                     </div>
                     <span class="font-bold text-sm text-center">${s.name}</span>
                 `;
