@@ -1,175 +1,262 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orukai Services | Labour Supply Startup</title>
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Orukai Services - Your trusted partner for labour supply solutions. We provide skilled professionals for home essentials, outdoor & farm, and tech & travel needs in Kerala.">
-    <meta name="keywords" content="labour supply, home services, outdoor services, tech services, Kerala, skilled professionals, Orukai">
-    <meta name="author" content="Orukai Services">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orukai Services | Trusted Labour & Home Services in Thrissur</title>
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+  <meta name="description" content="Orukai Services provides trusted labour, home maintenance, outdoor farm work, travel assistance, and tech support services across Thrissur. Connect with verified professionals for all your service needs." />
+  <meta name="keywords" content="Orukai, labour supply, home services, outdoor services, tech support, Thrissur, trusted professionals, home maintenance, travel assistance, farm work" />
 
-    <!-- Fonts and Custom Styles -->
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
-        .drawer-transition { transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1); }
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .hover-effect:hover { transform: scale(1.05); transition: transform 0.3s ease-in-out; }
-    </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .card-hover:hover {
+      transform: translateY(-5px);
+      transition: 0.3s ease;
+    }
+  </style>
 </head>
-<body class="bg-[#F3F4F6] text-[#1A1C1E]">
 
-    <!-- HERO SECTION -->
-    <header class="p-8 pb-6 bg-white rounded-b-[40px] shadow-sm">
-        <div class="flex items-center gap-2 mb-6">
-            <div class="w-8 h-8 bg-blue-600 rounded-xl flex items-center justify-center">
-                <i data-lucide="map-pin" class="w-4 h-4 text-white" aria-hidden="true"></i>
-            </div>
-            <span class="font-bold text-sm">Kattoor, Kerala</span>
-        </div>
-        <h1 class="text-3xl font-extrabold tracking-tight mb-6">What do you need help with <span class="text-blue-600">today?</span></h1>
-        <p class="text-gray-500 text-sm mb-6">Orukai Services connects you with skilled professionals for all your needs. From home essentials to outdoor and tech services, we’ve got you covered!</p>
-        
-        <!-- SEARCH BAR -->
-        <div class="bg-gray-100 rounded-2xl p-4 flex items-center gap-3 border border-gray-200">
-            <i data-lucide="search" class="w-5 h-5 text-gray-400" aria-hidden="true"></i>
-            <input type="text" placeholder="Search for services..." class="bg-transparent border-none outline-none text-sm w-full font-medium" aria-label="Search for services">
-        </div>
-    </header>
+<body class="bg-gray-100 dark:bg-[#0F172A] text-gray-900 dark:text-white transition-all duration-300">
 
-    <!-- SERVICE CATEGORIES -->
-    <main class="p-6 space-y-8 pb-32">
-        
-        <!-- CATEGORY: HOME ESSENTIALS -->
-        <div>
-            <h2 class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4 ml-2">Home Essentials</h2>
-            <div class="grid grid-cols-2 gap-4" id="home-essentials"></div>
-        </div>
+<!-- NAVBAR -->
+<nav class="flex justify-between items-center px-6 py-5 bg-white dark:bg-slate-900 shadow-md sticky top-0 z-50">
+  <div>
+    <h1 class="font-extrabold text-2xl text-blue-600">Orukai</h1>
+  </div>
 
-        <!-- CATEGORY: OUTDOOR & FARM -->
-        <div>
-            <h2 class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4 ml-2">Outdoor & Farm</h2>
-            <div class="grid grid-cols-2 gap-4" id="outdoor-farm"></div>
-        </div>
+  <div class="hidden md:flex gap-6 font-semibold">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#booking">Booking</a>
+    <a href="#contact">Contact</a>
+  </div>
 
-        <!-- CATEGORY: TECH & TRAVEL -->
-        <div>
-            <h2 class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4 ml-2">Tech & Travel</h2>
-            <div class="grid grid-cols-2 gap-4" id="tech-travel"></div>
-        </div>
+  <button onclick="toggleDarkMode()" class="bg-gray-200 dark:bg-slate-700 p-2 rounded-xl">
+    <i data-lucide="moon"></i>
+  </button>
+</nav>
 
-    </main>
+<!-- HERO -->
+<section id="home" class="px-6 py-16 text-center">
+  <h1 class="text-5xl font-extrabold leading-tight mb-5">
+    Trusted Labour & Home Services in <span class="text-blue-600">Kerala</span>
+  </h1>
 
-    <!-- THE 3-TAP DRAWER -->
-    <div id="overlay" class="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 hidden" onclick="closeDrawer()"></div>
-    
-    <div id="drawer" class="fixed bottom-0 left-0 right-0 bg-white rounded-t-[40px] z-50 p-8 drawer-transition translate-y-full">
-        <div class="w-12 h-1 bg-gray-200 rounded-full mx-auto mb-8"></div>
-        
-        <div class="mb-6">
-            <span id="drawer-cat" class="text-xs font-bold text-blue-600 uppercase tracking-widest"></span>
-            <h2 id="drawer-title" class="text-2xl font-extrabold mt-1">Book Service</h2>
-        </div>
+  <p class="max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-300 mb-8">
+    Home maintenance, outdoor work, tech support and travel services — all from verified professionals.
+  </p>
 
-        <form id="booking-form" class="space-y-4">
-            <div class="grid grid-cols-2 gap-3">
-                <div class="space-y-1">
-                    <label class="text-[10px] font-bold text-gray-400 ml-2 uppercase">When?</label>
-                    <input type="date" id="book-date" required class="w-full p-4 bg-gray-50 rounded-2xl font-semibold outline-none border-none focus:ring-2 focus:ring-blue-600" aria-label="Select booking date">
-                </div>
-                <div class="space-y-1">
-                    <label class="text-[10px] font-bold text-gray-400 ml-2 uppercase">Time</label>
-                    <select id="book-time" required class="w-full p-4 bg-gray-50 rounded-2xl font-semibold outline-none border-none focus:ring-2 focus:ring-blue-600" aria-label="Select booking time">
-                        <option value="Morning">Morning</option>
-                        <option value="Afternoon">Afternoon</option>
-                        <option value="Evening">Evening</option>
-                    </select>
-                </div>
-            </div>
+  <div class="flex justify-center gap-4 flex-wrap">
+    <a href="#booking" class="bg-blue-600 text-white px-8 py-4 rounded-2xl font-bold">
+      Book Service
+    </a>
 
-            <input type="text" id="user-name" placeholder="Your Name" required class="w-full p-4 bg-gray-50 rounded-2xl font-semibold outline-none border-none focus:ring-2 focus:ring-blue-600" aria-label="Enter your name">
-            <input type="tel" id="user-phone" placeholder="WhatsApp Number" required class="w-full p-4 bg-gray-50 rounded-2xl font-semibold outline-none border-none focus:ring-2 focus:ring-blue-600" aria-label="Enter your WhatsApp number">
+    <!--a href="https://wa.me/919539169197" class="bg-green-600 text-white px-8 py-4 rounded-2xl font-bold">
+      WhatsApp
+    </a-->
+  </div>
+</section>
 
-            <button type="submit" class="w-full bg-blue-600 text-white font-extrabold p-5 rounded-[24px] shadow-lg shadow-blue-200 flex items-center justify-center gap-3 active:scale-95 transition-transform">
-                Get Quotation <i data-lucide="chevron-right" class="w-5 h-5" aria-hidden="true"></i>
-            </button>
-        </form>
+<!-- ABOUT -->
+<section id="about" class="px-6 py-16 bg-white dark:bg-slate-900">
+  <div class="max-w-5xl mx-auto text-center">
+    <h2 class="text-4xl font-extrabold mb-6">About Orukai Services</h2>
+
+    <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+      Orukai Services is a Kerala-based labour supply startup helping customers connect with trusted workers for home maintenance, farming, transportation, and technical support.
+    </p>
+  </div>
+</section>
+
+<!-- FILTER -->
+<section class="px-6 py-10">
+  <div class="max-w-5xl mx-auto flex flex-wrap gap-4 justify-center">
+    <button onclick="filterServices('all')" class="filter-btn bg-blue-600 text-white px-5 py-2 rounded-xl">All</button>
+    <button onclick="filterServices('home')" class="filter-btn bg-white dark:bg-slate-800 px-5 py-2 rounded-xl">Home</button>
+    <button onclick="filterServices('farm')" class="filter-btn bg-white dark:bg-slate-800 px-5 py-2 rounded-xl">Farm</button>
+    <button onclick="filterServices('tech')" class="filter-btn bg-white dark:bg-slate-800 px-5 py-2 rounded-xl">Tech</button>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="px-6 pb-20">
+  <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+
+    <div class="service-card home bg-white dark:bg-slate-900 p-8 rounded-3xl shadow-lg card-hover">
+      <i data-lucide="wrench" class="w-10 h-10 text-blue-600 mb-4"></i>
+      <h3 class="font-bold text-2xl mb-3">Plumbing</h3>
+      <p class="text-gray-600 dark:text-gray-300">Professional plumbing services.</p>
     </div>
 
-    <script>
-        const categories = {
-            'home-essentials': [
-                { name: 'Plumber', icon: 'wrench', color: 'bg-blue-50 text-blue-600' },
-                { name: 'Electrician', icon: 'zap', color: 'bg-orange-50 text-orange-600' },
-                { name: 'Painter', icon: 'palette', color: 'bg-purple-50 text-purple-600' },
-                { name: 'Carpenter', icon: 'hammer', color: 'bg-amber-700/10 text-amber-700' }
-            ],
-            'outdoor-farm': [
-                { name: 'Coconut Harvest', icon: 'palmtree', color: 'bg-emerald-50 text-emerald-600' },
-                { name: 'Grass Cutting', icon: 'scissors', color: 'bg-lime-50 text-lime-600' },
-                { name: 'Tree Cutting', icon: 'tree-pine', color: 'bg-green-50 text-green-700' }
-            ],
-            'tech-travel': [
-                { name: 'Desktop Repair', icon: 'monitor', color: 'bg-indigo-50 text-indigo-600' },
-                { name: 'Pickup & Drop', icon: 'truck', color: 'bg-red-50 text-red-600' },
-                { name: 'Travel Package', icon: 'briefcase', color: 'bg-sky-50 text-sky-600' }
-            ]
-        };
+    <div class="service-card home bg-white dark:bg-slate-900 p-8 rounded-3xl shadow-lg card-hover">
+      <i data-lucide="zap" class="w-10 h-10 text-yellow-500 mb-4"></i>
+      <h3 class="font-bold text-2xl mb-3">Electrical</h3>
+      <p class="text-gray-600 dark:text-gray-300">Certified electricians for all needs.</p>
+    </div>
 
-        let selectedService = "";
+    <div class="service-card farm bg-white dark:bg-slate-900 p-8 rounded-3xl shadow-lg card-hover">
+      <i data-lucide="trees" class="w-10 h-10 text-green-600 mb-4"></i>
+      <h3 class="font-bold text-2xl mb-3">Tree Cutting</h3>
+      <p class="text-gray-600 dark:text-gray-300">Safe and fast outdoor work.</p>
+    </div>
 
-        // RENDER GRID
-        Object.keys(categories).forEach(catId => {
-            const container = document.getElementById(catId);
-            categories[catId].forEach(s => {
-                const div = document.createElement('div');
-                div.className = "bg-white p-6 rounded-[32px] border border-gray-100 flex flex-col items-center justify-center shadow-sm active:scale-95 transition-all cursor-pointer hover-effect";
-                div.onclick = () => openDrawer(s.name, catId);
-                div.innerHTML = `
-                    <div class="p-4 rounded-2xl mb-3 ${s.color}">
-                        <i data-lucide="${s.icon}" class="w-6 h-6" aria-hidden="true"></i>
-                    </div>
-                    <span class="font-bold text-sm text-center">${s.name}</span>
-                `;
-                container.appendChild(div);
-            });
-        });
+    <div class="service-card farm bg-white dark:bg-slate-900 p-8 rounded-3xl shadow-lg card-hover">
+      <i data-lucide="scissors" class="w-10 h-10 text-green-500 mb-4"></i>
+      <h3 class="font-bold text-2xl mb-3">Grass Cutting</h3>
+      <p class="text-gray-600 dark:text-gray-300">Farm and land cleaning solutions.</p>
+    </div>
 
-        // DRAWER LOGIC
-        function openDrawer(name, cat) {
-            selectedService = name;
-            document.getElementById('drawer-title').innerText = name;
-            document.getElementById('drawer-cat').innerText = cat.replace('-', ' ');
-            document.getElementById('drawer').classList.remove('translate-y-full');
-            document.getElementById('overlay').classList.remove('hidden');
-        }
+    <div class="service-card tech bg-white dark:bg-slate-900 p-8 rounded-3xl shadow-lg card-hover">
+      <i data-lucide="monitor" class="w-10 h-10 text-indigo-600 mb-4"></i>
+      <h3 class="font-bold text-2xl mb-3">Desktop Repair</h3>
+      <p class="text-gray-600 dark:text-gray-300">Computer and tech troubleshooting.</p>
+    </div>
 
-        function closeDrawer() {
-            document.getElementById('drawer').classList.add('translate-y-full');
-            document.getElementById('overlay').classList.add('hidden');
-        }
+    <div class="service-card tech bg-white dark:bg-slate-900 p-8 rounded-3xl shadow-lg card-hover">
+      <i data-lucide="truck" class="w-10 h-10 text-red-600 mb-4"></i>
+      <h3 class="font-bold text-2xl mb-3">Pickup & Drop</h3>
+      <p class="text-gray-600 dark:text-gray-300">Reliable transport assistance.</p>
+    </div>
 
-        // FORM SUBMISSION
-        document.getElementById('booking-form').onsubmit = (e) => {
-            e.preventDefault();
-            const date = document.getElementById('book-date').value;
-            const time = document.getElementById('book-time').value;
-            const name = document.getElementById('user-name').value;
-            
-            // This is where Supabase integration goes next!
-            alert(`Tap 3 Success! Request for ${selectedService} on ${date} ${time} sent.`);
-            closeDrawer();
-        };
+  </div>
+</section>
 
-        lucide.createIcons();
-    </script>
+<!-- ONLINE BOOKING -->
+<section id="booking" class="px-6 py-20 bg-white dark:bg-slate-900">
+  <div class="max-w-3xl mx-auto">
+
+    <h2 class="text-4xl font-extrabold text-center mb-10">Online Booking</h2>
+
+    <form id="bookingForm" class="space-y-5">
+
+      <input type="text" id="name" placeholder="Your Name"
+      class="w-full p-4 rounded-2xl bg-gray-100 dark:bg-slate-800 outline-none">
+
+      <input type="tel" id="phone" placeholder="WhatsApp Number"
+      class="w-full p-4 rounded-2xl bg-gray-100 dark:bg-slate-800 outline-none">
+
+      <select id="service"
+      class="w-full p-4 rounded-2xl bg-gray-100 dark:bg-slate-800 outline-none">
+        <option>Plumbing</option>
+        <option>Electrical</option>
+        <option>Tree Cutting</option>
+        <option>Desktop Repair</option>
+      </select>
+
+      <input type="date" id="date"
+      class="w-full p-4 rounded-2xl bg-gray-100 dark:bg-slate-800 outline-none">
+
+      <textarea id="message" rows="5" placeholder="Additional Details"
+      class="w-full p-4 rounded-2xl bg-gray-100 dark:bg-slate-800 outline-none"></textarea>
+
+      <button type="submit"
+      class="w-full bg-blue-600 text-white p-5 rounded-2xl font-bold text-lg">
+        Submit Booking
+      </button>
+
+    </form>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="px-6 py-20 text-center">
+  <h2 class="text-4xl font-extrabold mb-6">Contact Us</h2>
+
+  <p class="mb-3">📍 Kattoor, Kerala</p>
+  <!--p class="mb-3">📞 +91 9539169197</p-->
+  <p class="mb-8">✉️ info@orukai.com</p>
+
+  <iframe
+    class="w-full max-w-4xl mx-auto rounded-3xl"
+    height="300"
+    src="https://maps.google.com/maps?q=kerala&t=&z=13&ie=UTF8&iwloc=&output=embed">
+  </iframe>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-slate-950 text-white py-8 text-center">
+  <p>© 2026 Orukai Services. All rights reserved.</p>
+</footer>
+
+<!-- WHATSAPP FLOAT >
+<a href="https://wa.me/919539169197"
+class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-2xl">
+  <i data-lucide="message-circle"></i>
+</a-->
+
+<script>
+
+// DARK MODE
+function toggleDarkMode() {
+  document.documentElement.classList.toggle('dark');
+}
+
+// FILTER SERVICES
+function filterServices(category) {
+  const cards = document.querySelectorAll('.service-card');
+
+  cards.forEach(card => {
+    if(category === 'all') {
+      card.style.display = 'block';
+    }
+    else if(card.classList.contains(category)) {
+      card.style.display = 'block';
+    }
+    else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+// SUPABASE
+const SUPABASE_URL = 'YOUR_SUPABASE_URL';
+const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+
+const client = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+// ONLINE BOOKING
+const form = document.getElementById('bookingForm');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const bookingData = {
+    name: document.getElementById('name').value,
+    phone: document.getElementById('phone').value,
+    service: document.getElementById('service').value,
+    date: document.getElementById('date').value,
+    message: document.getElementById('message').value,
+  };
+
+  const { data, error } = await client
+    .from('bookings')
+    .insert([bookingData]);
+
+  if(error) {
+    alert('Booking failed');
+    console.log(error);
+  }
+  else {
+    alert('Booking submitted successfully');
+    form.reset();
+  }
+});
+
+lucide.createIcons();
+
+</script>
+
 </body>
 </html>
