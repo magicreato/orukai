@@ -221,7 +221,7 @@ function filterServices(category) {
 }
 
 // SUPABASE
-const SUPABASE_URL = 'https://yyupffimvilzvvzfnoow.supabase.co/rest/v1/';
+const SUPABASE_URL = 'https://yyupffimvilzvvzfnoow.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl5dXBmZmltdmlsenZ2emZub293Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg2ODQzNjQsImV4cCI6MjA5NDI2MDM2NH0.Voh7nQTxyUXLL7E_RkQpUCzgwbnIf3jeKNS0Ikp-dDw';
 
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -249,7 +249,7 @@ form.addEventListener('submit', async (e) => {
     console.log(error);
   }
   else {
-    alert('Booking submitted successfully');
+    alert('Booking successfull, we will contact you soon!');
     form.reset();
   }
 });
