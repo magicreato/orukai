@@ -7,7 +7,11 @@
 
   <meta name="description" content="Orukai Services provides trusted labour, home maintenance, outdoor farm work, travel assistance, and tech support services across Thrissur. Connect with verified professionals for all your service needs." />
   <meta name="keywords" content="Orukai, labour supply, home services, outdoor services, tech support, Thrissur, trusted professionals, home maintenance, travel assistance, farm work" />
-
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+  }
+</script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -29,10 +33,25 @@
 <body class="bg-gray-100 dark:bg-[#0F172A] text-gray-900 dark:text-white transition-all duration-300">
 
 <!-- NAVBAR -->
-<nav class="flex justify-between items-center px-6 py-5 bg-white dark:bg-slate-900 shadow-md sticky top-0 z-50">
-  <div>
-    <h1 class="font-extrabold text-2xl text-blue-600">Orukai</h1>
-  </div>
+<nav class="flex justify-between items-center px-6 py-4 bg-white dark:bg-slate-900 shadow-md sticky top-0 z-50">
+
+ 
+
+   
+
+   <div class="flex items-center gap-3">
+  <img
+    src="orukai.png"
+    alt="Orukai "
+    class="w-12 h-12 object-contain"
+  >
+
+  <h1 class="font-extrabold text-2xl text-blue-600">
+    Orukai
+  </h1>
+</div>
+
+ 
 
   <div class="hidden md:flex gap-6 font-semibold">
     <a href="#home">Home</a>
@@ -42,9 +61,13 @@
     <a href="#contact">Contact</a>
   </div>
 
-  <button onclick="toggleDarkMode()" class="bg-gray-200 dark:bg-slate-700 p-2 rounded-xl">
-    <i data-lucide="moon"></i>
+  <button
+    onclick="toggleDarkMode()"
+    class="bg-gray-200 dark:bg-slate-700 p-3 rounded-xl"
+  >
+    <i id="themeIcon" data-lucide="moon"></i>
   </button>
+
 </nav>
 
 <!-- HERO -->
@@ -201,7 +224,37 @@ class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-2x
 // DARK MODE
 function toggleDarkMode() {
   document.documentElement.classList.toggle('dark');
+
+  localStorage.setItem(
+    'theme',
+    document.documentElement.classList.contains('dark')
+      ? 'dark'
+      : 'light'
+  );
+
+  updateThemeIcon();
 }
+
+function updateThemeIcon() {
+  const icon = document.getElementById('themeIcon');
+
+  if (document.documentElement.classList.contains('dark')) {
+    icon.setAttribute('data-lucide', 'sun');
+  } else {
+    icon.setAttribute('data-lucide', 'moon');
+  }
+
+  lucide.createIcons();
+}
+
+// Load saved theme
+if (localStorage.getItem('theme') === 'dark') {
+  document.documentElement.classList.add('dark');
+}
+
+window.onload = () => {
+  updateThemeIcon();
+};
 
 // FILTER SERVICES
 function filterServices(category) {
