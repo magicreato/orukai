@@ -1,0 +1,679 @@
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+
+  <!-- BASIC -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <title>
+    Get Free Quotation | Orukai Labour & Home Services Kerala
+  </title>
+
+  <meta
+    name="description"
+    content="Request a free quotation for plumbing, electrical work, labour supply, tree cutting, grass cutting and technical services in Thrissur and Kerala."
+  />
+
+  <meta
+    name="keywords"
+    content="quotation Kerala, labour quotation Thrissur, plumbing quotation Kerala, electrical services quote, Orukai quotation"
+  />
+
+  <meta name="author" content="Orukai Services" />
+
+  <!-- OPEN GRAPH -->
+  <meta property="og:title" content="Get Free Quotation | Orukai Services" />
+
+  <meta
+    property="og:description"
+    content="Request quotations for labour and home services across Kerala."
+  />
+
+  <meta
+    property="og:image"
+    content="orukai.png"
+  />
+
+  <meta
+    property="og:url"
+    content="https://orukai.in/quotation.html"
+  />
+
+  <meta property="og:type" content="website" />
+
+  <!-- FAVICON -->
+  <link
+    rel="icon"
+    type="image/png"
+    href="orukai.png"
+  />
+
+  <!-- GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- TAILWIND -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- ICONS -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- SUPABASE -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+  </style>
+
+</head>
+
+<body class="bg-gray-100 dark:bg-[#111827] text-gray-900 dark:text-white transition-all duration-300">
+
+<!-- NAVBAR -->
+<nav class="sticky top-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-sm">
+
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+    <!-- LOGO -->
+    <a href="index.html" class="flex items-center gap-3">
+
+      <img
+        src="orukai.png"
+        alt="Orukai Logo"
+        class="w-12 h-12 object-contain"
+      />
+
+      <div>
+        <h1 class="font-extrabold text-2xl text-yellow-500">
+          Orukai
+        </h1>
+
+        <p class="text-xs text-gray-500 dark:text-gray-400">
+          Trusted Kerala Services
+        </p>
+      </div>
+
+    </a>
+
+    <!-- MENU -->
+    <div class="hidden md:flex items-center gap-8 font-semibold">
+
+      <a href="index.html" class="hover:text-yellow-500">
+        Home
+      </a>
+
+      <a href="about.html" class="hover:text-yellow-500">
+        About
+      </a>
+
+      <a href="services.html" class="hover:text-yellow-500">
+        Services
+      </a>
+
+      <a href="quotation.html" class="text-yellow-500">
+        Quotation
+      </a>
+
+      <a href="contact.html" class="hover:text-yellow-500">
+        Contact
+      </a>
+
+    </div>
+
+    <!-- DARK MODE -->
+    <button
+      onclick="toggleDarkMode()"
+      class="bg-gray-200 dark:bg-slate-700 p-3 rounded-xl"
+    >
+      <i id="themeIcon" data-lucide="moon"></i>
+    </button>
+
+  </div>
+
+</nav>
+
+<!-- HERO -->
+<section class="bg-yellow-400 py-20">
+
+  <div class="max-w-5xl mx-auto px-6 text-center">
+
+    <p class="uppercase tracking-widest font-bold text-black mb-4">
+      Request Free Quotation
+    </p>
+
+    <h1 class="text-5xl md:text-6xl font-extrabold text-black mb-6">
+
+      Get a Professional
+      Service Quote
+      Today
+
+    </h1>
+
+    <p class="max-w-3xl mx-auto text-lg text-black/80 leading-relaxed">
+
+      Submit your requirements and our team
+      will contact you with pricing and
+      service availability.
+
+    </p>
+
+  </div>
+
+</section>
+
+<!-- FORM SECTION -->
+<section class="py-24">
+
+  <div class="max-w-4xl mx-auto px-6">
+
+    <div class="bg-white dark:bg-slate-900 rounded-[40px] shadow-2xl p-10 md:p-14">
+
+      <!-- TITLE -->
+      <div class="text-center mb-12">
+
+        <h2 class="text-4xl font-extrabold mb-4">
+          Online Booking & Quotation
+        </h2>
+
+        <p class="text-gray-600 dark:text-gray-300">
+          Fill the form below to request
+          your quotation.
+        </p>
+
+      </div>
+
+      <!-- FORM -->
+      <form id="quotationForm" class="space-y-6">
+
+        <!-- NAME -->
+        <div>
+
+          <label class="block font-semibold mb-3">
+            Full Name
+          </label>
+
+          <input
+            type="text"
+            id="name"
+            required
+            placeholder="Enter your name"
+            class="w-full p-5 rounded-2xl bg-gray-100 dark:bg-slate-800 outline-none"
+          />
+
+        </div>
+
+        <!-- PHONE -->
+        <div>
+
+          <label class="block font-semibold mb-3">
+            WhatsApp Number
+          </label>
+
+          <input
+            type="tel"
+            id="phone"
+            required
+            placeholder="Enter your WhatsApp number"
+            class="w-full p-5 rounded-2xl bg-gray-100 dark:bg-slate-800 outline-none"
+          />
+
+        </div>
+
+        <!-- SERVICE -->
+        <div>
+
+          <label class="block font-semibold mb-3">
+            Select Service
+          </label>
+
+          <select
+            id="service"
+            required
+            class="w-full p-5 rounded-2xl bg-gray-100 dark:bg-slate-800 outline-none"
+          >
+
+            <option value="">
+              Choose Service
+            </option>
+
+            <option>
+              Plumbing
+            </option>
+
+            <option>
+              Electrical Work
+            </option>
+
+            <option>
+              Carpentry
+            </option>
+
+            <option>
+              Tree Cutting
+            </option>
+
+            <option>
+              Grass Cutting
+            </option>
+
+            <option>
+              Pickup & Drop
+            </option>
+
+            <option>
+              Desktop Repair
+            </option>
+
+          </select>
+
+        </div>
+
+        <!-- DATE -->
+        <div>
+
+          <label class="block font-semibold mb-3">
+            Preferred Date
+          </label>
+
+          <input
+            type="date"
+            id="date"
+            required
+            class="w-full p-5 rounded-2xl bg-gray-100 dark:bg-slate-800 outline-none"
+          />
+
+        </div>
+
+        <!-- LOCATION -->
+        <div>
+
+          <label class="block font-semibold mb-3">
+            Service Location
+          </label>
+
+          <input
+            type="text"
+            id="location"
+            required
+            placeholder="Enter your area/location"
+            class="w-full p-5 rounded-2xl bg-gray-100 dark:bg-slate-800 outline-none"
+          />
+
+        </div>
+
+        <!-- MESSAGE -->
+        <div>
+
+          <label class="block font-semibold mb-3">
+            Additional Details
+          </label>
+
+          <textarea
+            id="message"
+            rows="6"
+            placeholder="Describe your requirement..."
+            class="w-full p-5 rounded-2xl bg-gray-100 dark:bg-slate-800 outline-none"
+          ></textarea>
+
+        </div>
+
+        <!-- BUTTON -->
+        <button
+          type="submit"
+          id="submitBtn"
+          class="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-extrabold p-5 rounded-2xl text-lg"
+        >
+          Submit Quotation Request
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- WHY US -->
+<section class="bg-white dark:bg-slate-900 py-20">
+
+  <div class="max-w-7xl mx-auto px-6">
+
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <!-- CARD -->
+      <div class="bg-gray-100 dark:bg-slate-800 rounded-[32px] p-10 text-center">
+
+        <i
+          data-lucide="badge-check"
+          class="w-14 h-14 text-yellow-500 mx-auto mb-6"
+        ></i>
+
+        <h3 class="text-2xl font-bold mb-4">
+          Trusted Professionals
+        </h3>
+
+        <p class="text-gray-600 dark:text-gray-300">
+          Verified and experienced workers
+          across multiple services.
+        </p>
+
+      </div>
+
+      <!-- CARD -->
+      <div class="bg-gray-100 dark:bg-slate-800 rounded-[32px] p-10 text-center">
+
+        <i
+          data-lucide="clock-3"
+          class="w-14 h-14 text-yellow-500 mx-auto mb-6"
+        ></i>
+
+        <h3 class="text-2xl font-bold mb-4">
+          Quick Response
+        </h3>
+
+        <p class="text-gray-600 dark:text-gray-300">
+          Fast quotations and service
+          confirmations from our team.
+        </p>
+
+      </div>
+
+      <!-- CARD -->
+      <div class="bg-gray-100 dark:bg-slate-800 rounded-[32px] p-10 text-center">
+
+        <i
+          data-lucide="wallet"
+          class="w-14 h-14 text-yellow-500 mx-auto mb-6"
+        ></i>
+
+        <h3 class="text-2xl font-bold mb-4">
+          Affordable Pricing
+        </h3>
+
+        <p class="text-gray-600 dark:text-gray-300">
+          Transparent quotations with
+          budget-friendly pricing.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-gray-900 text-white py-14">
+
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10">
+
+    <!-- BRAND -->
+    <div>
+
+      <div class="flex items-center gap-3 mb-5">
+
+        <img
+          src="orukai.png"
+          class="w-12 h-12"
+        />
+
+        <h2 class="text-2xl font-extrabold text-yellow-400">
+          Orukai
+        </h2>
+
+      </div>
+
+      <p class="text-gray-400">
+        Trusted labour supply and home services
+        across Thrissur and Kerala.
+      </p>
+
+    </div>
+
+    <!-- LINKS -->
+    <div>
+
+      <h3 class="font-bold mb-5">
+        Quick Links
+      </h3>
+
+      <div class="space-y-3 text-gray-400">
+
+        <a href="index.html" class="block">
+          Home
+        </a>
+
+        <a href="about.html" class="block">
+          About
+        </a>
+
+        <a href="services.html" class="block">
+          Services
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- SERVICES -->
+    <div>
+
+      <h3 class="font-bold mb-5">
+        Services
+      </h3>
+
+      <div class="space-y-3 text-gray-400">
+
+        <p>Plumbing</p>
+        <p>Electrical</p>
+        <p>Tree Cutting</p>
+        <p>Desktop Repair</p>
+
+      </div>
+
+    </div>
+
+    <!-- CONTACT -->
+    <div>
+
+      <h3 class="font-bold mb-5">
+        Contact
+      </h3>
+
+      <div class="space-y-3 text-gray-400">
+
+        <p>📍 Kattoor, Thrissur</p>
+
+        <p>📞 +91 9539169197</p>
+
+        <p>✉️ info@orukai.in</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
+
+    © 2026 Orukai Services.
+    All Rights Reserved.
+
+  </div>
+
+</footer>
+
+<!-- WHATSAPP -->
+<a
+  href="https://wa.me/919539169197"
+  target="_blank"
+  class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl z-50"
+>
+
+  <i data-lucide="message-circle"></i>
+
+</a>
+
+<!-- JS -->
+<script>
+
+  // DARK MODE
+  function toggleDarkMode() {
+
+    document.documentElement.classList.toggle('dark');
+
+    localStorage.setItem(
+      'theme',
+      document.documentElement.classList.contains('dark')
+      ? 'dark'
+      : 'light'
+    );
+
+    updateThemeIcon();
+  }
+
+  // ICON
+  function updateThemeIcon() {
+
+    const icon =
+    document.getElementById('themeIcon');
+
+    if (
+      document.documentElement.classList.contains('dark')
+    ) {
+
+      icon.setAttribute('data-lucide', 'sun');
+
+    } else {
+
+      icon.setAttribute('data-lucide', 'moon');
+    }
+
+    lucide.createIcons();
+  }
+
+  // LOAD THEME
+  if (
+    localStorage.getItem('theme') === 'dark'
+  ) {
+
+    document.documentElement.classList.add('dark');
+  }
+
+  window.onload = () => {
+
+    updateThemeIcon();
+  };
+
+  // ICONS
+  lucide.createIcons();
+
+  // SUPABASE
+  const SUPABASE_URL =
+  'https://yyupffimvilzvvzfnoow.supabase.co';
+
+  const SUPABASE_ANON_KEY =
+  'YOUR_SUPABASE_ANON_KEY';
+
+  const client =
+  supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_ANON_KEY
+  );
+
+  // FORM
+  const form =
+  document.getElementById('quotationForm');
+
+  form.addEventListener('submit', async (e) => {
+
+    e.preventDefault();
+
+    const submitBtn =
+    document.getElementById('submitBtn');
+
+    submitBtn.innerText =
+    'Submitting...';
+
+    const quotationData = {
+
+      name:
+      document.getElementById('name').value,
+
+      phone:
+      document.getElementById('phone').value,
+
+      service:
+      document.getElementById('service').value,
+
+      date:
+      document.getElementById('date').value,
+
+      location:
+      document.getElementById('location').value,
+
+      message:
+      document.getElementById('message').value,
+
+    };
+
+    const { data, error } =
+    await client
+    .from('bookings')
+    .insert([quotationData]);
+
+    if (error) {
+
+      console.log(error);
+
+      alert(
+        'Quotation request failed. Please try again.'
+      );
+
+      submitBtn.innerText =
+      'Submit Quotation Request';
+
+    } else {
+
+      alert(
+        'Quotation request submitted successfully!'
+      );
+
+      form.reset();
+
+      submitBtn.innerText =
+      'Submit Quotation Request';
+    }
+
+  });
+
+</script>
+
+</body>
+</html>
