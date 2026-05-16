@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+
+  <!-- BASIC -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <title>
+    Services | Plumbing, Electrical & Labour Services in Thrissur
+  </title>
+
+  <meta
+    name="description"
+    content="Explore Orukai Services including plumbing, electrical work, tree cutting, grass cutting, pickup & drop, desktop repair and labour supply services across Kerala."
+  />
+
+  <meta
+    name="keywords"
+    content="plumbing Thrissur, electrician Kerala, tree cutting Kerala, pickup and drop Thrissur, labour services Kerala, desktop repair Thrissur"
+  />
+
+  <meta name="author" content="Orukai Services" />
+
+  <!-- OPEN GRAPH -->
+  <meta property="og:title" content="Orukai Services" />
+
+  <meta
+    property="og:description"
+    content="Professional Labour & Home Services in Kerala"
+  />
+
+  <meta
+    property="og:image"
+    content="orukai.png"
+  />
+
+  <meta
+    property="og:url"
+    content="https://orukai.in/services.html"
+  />
+
+  <meta property="og:type" content="website" />
+
+  <!-- FAVICON -->
+  <link
+    rel="icon"
+    type="image/png"
+    href="orukai.png"
+  />
+
+  <!-- GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- TAILWIND -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- ICONS -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      transition: 0.3s ease;
+    }
+
+  </style>
+
+</head>
+
+<body class="bg-gray-100 dark:bg-[#111827] text-gray-900 dark:text-white transition-all duration-300">
+
+<!-- NAVBAR -->
+<nav class="sticky top-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-sm">
+
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+    <!-- LOGO -->
+    <a href="index.html" class="flex items-center gap-3">
+
+      <img
+        src="orukai.png"
+        alt="Orukai Logo"
+        class="w-12 h-12 object-contain"
+      />
+
+      <div>
+        <h1 class="font-extrabold text-2xl text-yellow-500">
+          Orukai
+        </h1>
+
+        <p class="text-xs text-gray-500 dark:text-gray-400">
+          Trusted Kerala Services
+        </p>
+      </div>
+
+    </a>
+
+    <!-- MENU -->
+    <div class="hidden md:flex items-center gap-8 font-semibold">
+
+      <a href="index.html" class="hover:text-yellow-500">
+        Home
+      </a>
+
+      <a href="about.html" class="hover:text-yellow-500">
+        About
+      </a>
+
+      <a href="services.html" class="text-yellow-500">
+        Services
+      </a>
+
+      <a href="quotation.html" class="hover:text-yellow-500">
+        Quotation
+      </a>
+
+      <a href="contact.html" class="hover:text-yellow-500">
+        Contact
+      </a>
+
+    </div>
+
+    <!-- DARK MODE -->
+    <button
+      onclick="toggleDarkMode()"
+      class="bg-gray-200 dark:bg-slate-700 p-3 rounded-xl"
+    >
+      <i id="themeIcon" data-lucide="moon"></i>
+    </button>
+
+  </div>
+
+</nav>
+
+<!-- HERO -->
+<section class="bg-yellow-400 py-20">
+
+  <div class="max-w-6xl mx-auto px-6 text-center">
+
+    <p class="uppercase tracking-widest font-bold text-black mb-4">
+      Our Professional Services
+    </p>
+
+    <h1 class="text-5xl md:text-6xl font-extrabold text-black mb-6">
+
+      Reliable Labour &
+      Home Services
+      Across Kerala
+
+    </h1>
+
+    <p class="max-w-3xl mx-auto text-lg text-black/80 leading-relaxed">
+
+      Plumbing, electrical work, outdoor maintenance,
+      transportation and technical support services
+      from trusted professionals.
+
+    </p>
+
+  </div>
+
+</section>
+
+<!-- FILTER -->
+<section class="py-10">
+
+  <div class="max-w-5xl mx-auto px-6 flex flex-wrap justify-center gap-4">
+
+    <button
+      onclick="filterServices('all')"
+      class="filter-btn bg-yellow-400 text-black px-6 py-3 rounded-2xl font-bold"
+    >
+      All
+    </button>
+
+    <button
+      onclick="filterServices('home')"
+      class="filter-btn bg-white dark:bg-slate-800 px-6 py-3 rounded-2xl font-bold"
+    >
+      Home
+    </button>
+
+    <button
+      onclick="filterServices('outdoor')"
+      class="filter-btn bg-white dark:bg-slate-800 px-6 py-3 rounded-2xl font-bold"
+    >
+      Outdoor
+    </button>
+
+    <button
+      onclick="filterServices('tech')"
+      class="filter-btn bg-white dark:bg-slate-800 px-6 py-3 rounded-2xl font-bold"
+    >
+      Tech
+    </button>
+
+  </div>
+
+</section>
+
+<!-- SERVICES -->
+<section class="pb-24">
+
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8">
+
+    <!-- PLUMBING -->
+    <div class="service-card home bg-white dark:bg-slate-900 rounded-[32px] p-8 shadow-lg">
+
+      <div class="bg-yellow-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+        <i data-lucide="wrench" class="w-8 h-8 text-yellow-600"></i>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4">
+        Plumbing
+      </h3>
+
+      <p class="text-gray-600 dark:text-gray-300 mb-6">
+        Professional plumbing solutions
+        for homes, offices and commercial spaces.
+      </p>
+
+      <ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
+
+        <li>✔ Pipe Repairs</li>
+        <li>✔ Water Leakage</li>
+        <li>✔ Bathroom Fittings</li>
+
+      </ul>
+
+    </div>
+
+    <!-- ELECTRICAL -->
+    <div class="service-card home bg-white dark:bg-slate-900 rounded-[32px] p-8 shadow-lg">
+
+      <div class="bg-yellow-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+        <i data-lucide="zap" class="w-8 h-8 text-yellow-600"></i>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4">
+        Electrical Work
+      </h3>
+
+      <p class="text-gray-600 dark:text-gray-300 mb-6">
+        Certified electricians for installation,
+        maintenance and repairs.
+      </p>
+
+      <ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
+
+        <li>✔ Wiring</li>
+        <li>✔ Switch Repairs</li>
+        <li>✔ Fan Installation</li>
+
+      </ul>
+
+    </div>
+
+    <!-- CARPENTRY -->
+    <div class="service-card home bg-white dark:bg-slate-900 rounded-[32px] p-8 shadow-lg">
+
+      <div class="bg-yellow-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+        <i data-lucide="hammer" class="w-8 h-8 text-yellow-600"></i>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4">
+        Carpentry
+      </h3>
+
+      <p class="text-gray-600 dark:text-gray-300 mb-6">
+        Furniture repairs and woodwork
+        solutions by experienced carpenters.
+      </p>
+
+      <ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
+
+        <li>✔ Furniture Fixing</li>
+        <li>✔ Wood Installation</li>
+        <li>✔ Interior Work</li>
+
+      </ul>
+
+    </div>
+
+    <!-- TREE CUTTING -->
+    <div class="service-card outdoor bg-white dark:bg-slate-900 rounded-[32px] p-8 shadow-lg">
+
+      <div class="bg-yellow-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+        <i data-lucide="trees" class="w-8 h-8 text-yellow-600"></i>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4">
+        Tree Cutting
+      </h3>
+
+      <p class="text-gray-600 dark:text-gray-300 mb-6">
+        Safe tree cutting and coconut
+        harvesting services.
+      </p>
+
+      <ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
+
+        <li>✔ Coconut Harvesting</li>
+        <li>✔ Tree Trimming</li>
+        <li>✔ Safety Equipment</li>
+
+      </ul>
+
+    </div>
+
+    <!-- GRASS CUTTING -->
+    <div class="service-card outdoor bg-white dark:bg-slate-900 rounded-[32px] p-8 shadow-lg">
+
+      <div class="bg-yellow-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+        <i data-lucide="scissors" class="w-8 h-8 text-yellow-600"></i>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4">
+        Grass Cutting
+      </h3>
+
+      <p class="text-gray-600 dark:text-gray-300 mb-6">
+        Farm and land cleaning
+        solutions for homes and estates.
+      </p>
+
+      <ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
+
+        <li>✔ Land Cleaning</li>
+        <li>✔ Farm Maintenance</li>
+        <li>✔ Weed Removal</li>
+
+      </ul>
+
+    </div>
+
+    <!-- PICKUP -->
+    <div class="service-card tech bg-white dark:bg-slate-900 rounded-[32px] p-8 shadow-lg">
+
+      <div class="bg-yellow-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+        <i data-lucide="truck" class="w-8 h-8 text-yellow-600"></i>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4">
+        Pickup & Drop
+      </h3>
+
+      <p class="text-gray-600 dark:text-gray-300 mb-6">
+        Reliable transportation and
+        delivery support services.
+      </p>
+
+      <ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
+
+        <li>✔ Local Transport</li>
+        <li>✔ Delivery Support</li>
+        <li>✔ Pickup Assistance</li>
+
+      </ul>
+
+    </div>
+
+    <!-- DESKTOP -->
+    <div class="service-card tech bg-white dark:bg-slate-900 rounded-[32px] p-8 shadow-lg">
+
+      <div class="bg-yellow-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+        <i data-lucide="monitor" class="w-8 h-8 text-yellow-600"></i>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4">
+        Desktop Repair
+      </h3>
+
+      <p class="text-gray-600 dark:text-gray-300 mb-6">
+        Technical troubleshooting and
+        computer repair services.
+      </p>
+
+      <ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
+
+        <li>✔ System Repair</li>
+        <li>✔ Virus Removal</li>
+        <li>✔ Hardware Support</li>
+
+      </ul>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- CTA -->
+<section class="bg-yellow-400 py-20">
+
+  <div class="max-w-4xl mx-auto text-center px-6">
+
+    <h2 class="text-5xl font-extrabold text-black mb-6">
+
+      Need a Service Today?
+
+    </h2>
+
+    <p class="text-lg text-black/80 mb-8">
+
+      connect with trusted professionals instantly.
+
+    </p>
+
+    <a
+      href="quotation.html"
+      class="bg-black text-white px-10 py-5 rounded-2xl font-bold inline-block"
+    >
+      Enquiry
+    </a>
+
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-gray-900 text-white py-14">
+
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10">
+
+    <!-- BRAND -->
+    <div>
+
+      <div class="flex items-center gap-3 mb-5">
+
+        <img
+          src="orukai.png"
+          class="w-12 h-12"
+        />
+
+        <h2 class="text-2xl font-extrabold text-yellow-400">
+          Orukai
+        </h2>
+
+      </div>
+
+      <p class="text-gray-400">
+        Trusted labour supply and home services
+        across Thrissur and Kerala.
+      </p>
+
+    </div>
+
+    <!-- LINKS -->
+    <div>
+
+      <h3 class="font-bold mb-5">
+        Quick Links
+      </h3>
+
+      <div class="space-y-3 text-gray-400">
+
+        <a href="index.html" class="block">
+          Home
+        </a>
+
+        <a href="about.html" class="block">
+          About
+        </a>
+
+        <a href="services.html" class="block">
+          Services
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- SERVICES -->
+    <div>
+
+      <h3 class="font-bold mb-5">
+        Services
+      </h3>
+
+      <div class="space-y-3 text-gray-400">
+
+        <p>Plumbing</p>
+        <p>Electrical</p>
+        <p>Tree Cutting</p>
+        <p>Desktop Repair</p>
+
+      </div>
+
+    </div>
+
+    <!-- CONTACT -->
+    <div>
+
+      <h3 class="font-bold mb-5">
+        Contact
+      </h3>
+
+      <div class="space-y-3 text-gray-400">
+
+        <p>📍 Kattoor, Thrissur</p>
+
+        <p>📞 +91 9539169197</p>
+
+        <p>✉️ info@orukai.in</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
+
+    © 2026 Orukai Services.
+    All Rights Reserved.
+
+  </div>
+
+</footer>
+
+<!-- WHATSAPP -->
+<a
+  href="https://wa.me/919539169197"
+  target="_blank"
+  class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl z-50"
+>
+
+  <i data-lucide="message-circle"></i>
+
+</a>
+
+<!-- JS -->
+<script>
+
+  // FILTER SERVICES
+  function filterServices(category) {
+
+    const cards =
+    document.querySelectorAll('.service-card');
+
+    cards.forEach(card => {
+
+      if (category === 'all') {
+
+        card.style.display = 'block';
+
+      } else if (
+        card.classList.contains(category)
+      ) {
+
+        card.style.display = 'block';
+
+      } else {
+
+        card.style.display = 'none';
+      }
+
+    });
+  }
+
+  // DARK MODE
+  function toggleDarkMode() {
+
+    document.documentElement.classList.toggle('dark');
+
+    localStorage.setItem(
+      'theme',
+      document.documentElement.classList.contains('dark')
+      ? 'dark'
+      : 'light'
+    );
+
+    updateThemeIcon();
+  }
+
+  // ICON
+  function updateThemeIcon() {
+
+    const icon =
+    document.getElementById('themeIcon');
+
+    if (
+      document.documentElement.classList.contains('dark')
+    ) {
+
+      icon.setAttribute('data-lucide', 'sun');
+
+    } else {
+
+      icon.setAttribute('data-lucide', 'moon');
+    }
+
+    lucide.createIcons();
+  }
+
+  // LOAD THEME
+  if (
+    localStorage.getItem('theme') === 'dark'
+  ) {
+
+    document.documentElement.classList.add('dark');
+  }
+
+  window.onload = () => {
+
+    updateThemeIcon();
+  };
+
+  // ICONS
+  lucide.createIcons();
+
+</script>
+
+</body>
+</html>
+
