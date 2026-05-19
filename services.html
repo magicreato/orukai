@@ -14,12 +14,12 @@
 
   <meta
     name="description"
-    content="Explore Orukai Services including plumbing, electrical work, tree cutting, grass cutting, pickup & drop, desktop repair and labour supply services across Kerala."
+    content="Explore Orukai Services including plumbing, electrical work, Painting work, pickup & drop, desktop repair and labour supply services across Thrissur and Ernakulam."
   />
 
   <meta
     name="keywords"
-    content="plumbing Thrissur, electrician Kerala, tree cutting Kerala, pickup and drop Thrissur, labour services Kerala, desktop repair Thrissur"
+    content="plumbing Thrissur, electrician Thrissur, painting Thrissur, ernakulam painting, pickup and drop Thrissur, labour services thrissur, desktop repair Thrissur"
   />
 
   <meta name="author" content="Orukai Services" />
@@ -29,7 +29,7 @@
 
   <meta
     property="og:description"
-    content="Professional Labour & Home Services in Kerala"
+    content="Professional Labour & Home Services in thrissur"
   />
 
   <meta
@@ -114,7 +114,7 @@
         </h1>
 
         <p class="text-xs text-gray-500 dark:text-gray-400">
-          Trusted Kerala Services
+          Trusted Services
         </p>
       </div>
 
@@ -168,9 +168,9 @@
 
     <h1 class="text-5xl md:text-6xl font-extrabold text-black mb-6">
 
-      Reliable Labour &
-      Home Services
-      Across Kerala
+      Reliable Labour <br>
+      Home & Office Services
+      
 
     </h1>
 
@@ -193,7 +193,7 @@
 
     <button
       onclick="filterServices('all')"
-      class="filter-btn bg-yellow-400 text-black px-6 py-3 rounded-2xl font-bold"
+      class="filter-btn bg-white text-black px-6 py-3 rounded-2xl font-bold"
     >
       All
     </button>
@@ -221,12 +221,56 @@
 
   </div>
 
+  <style>
+    .filter-btn {
+      background-color: #ddd7d7cf;
+      color: black;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .filter-btn:hover {
+      background-color: #e8992b;
+      color: black;
+    }
+
+    .filter-btn.selected {
+      background-color: #e7a10c;
+      color: black;
+    }
+  </style>
+
 </section>
 
 <!-- SERVICES -->
 <section class="pb-24">
 
   <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8">
+
+      <!-- Painting -->
+    <div class="service-card home bg-white dark:bg-slate-900 rounded-[32px] p-8 shadow-lg">
+
+      <div class="bg-yellow-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+        <i data-lucide="brush" class="w-8 h-8 text-yellow-600"></i>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4">
+        Painting Work
+      </h3>
+
+      <p class="text-gray-600 dark:text-gray-300 mb-6">
+        Professional painting services
+        for homes and commercial spaces.
+      </p>
+
+      <ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
+
+        <li>✔ Interior & Exterior</li>
+        <li>✔ Texture work</li>
+        <li>✔ Water Proofing</li>
+
+      </ul>
+
+    </div>
 
     <!-- PLUMBING -->
     <div class="service-card home bg-white dark:bg-slate-900 rounded-[32px] p-8 shadow-lg">
@@ -280,59 +324,10 @@
 
     </div>
 
-    <!-- CARPENTRY -->
-    <div class="service-card home bg-white dark:bg-slate-900 rounded-[32px] p-8 shadow-lg">
+    
+  
 
-      <div class="bg-yellow-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
-        <i data-lucide="hammer" class="w-8 h-8 text-yellow-600"></i>
-      </div>
-
-      <h3 class="text-2xl font-bold mb-4">
-        Carpentry
-      </h3>
-
-      <p class="text-gray-600 dark:text-gray-300 mb-6">
-        Furniture repairs and woodwork
-        solutions by experienced carpenters.
-      </p>
-
-      <ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
-
-        <li>✔ Furniture Fixing</li>
-        <li>✔ Wood Installation</li>
-        <li>✔ Interior Work</li>
-
-      </ul>
-
-    </div>
-
-    <!-- TREE CUTTING -->
-    <div class="service-card outdoor bg-white dark:bg-slate-900 rounded-[32px] p-8 shadow-lg">
-
-      <div class="bg-yellow-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
-        <i data-lucide="trees" class="w-8 h-8 text-yellow-600"></i>
-      </div>
-
-      <h3 class="text-2xl font-bold mb-4">
-        Tree Cutting
-      </h3>
-
-      <p class="text-gray-600 dark:text-gray-300 mb-6">
-        Safe tree cutting and coconut
-        harvesting services.
-      </p>
-
-      <ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
-
-        <li>✔ Coconut Harvesting</li>
-        <li>✔ Tree Trimming</li>
-        <li>✔ Safety Equipment</li>
-
-      </ul>
-
-    </div>
-
-    <!-- GRASS CUTTING -->
+    <!-- GRASS CUTTING >
     <div class="service-card outdoor bg-white dark:bg-slate-900 rounded-[32px] p-8 shadow-lg">
 
       <div class="bg-yellow-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
@@ -356,10 +351,10 @@
 
       </ul>
 
-    </div>
+    </div-->
 
     <!-- PICKUP -->
-    <div class="service-card tech bg-white dark:bg-slate-900 rounded-[32px] p-8 shadow-lg">
+    <div class="service-card outdoor bg-white dark:bg-slate-900 rounded-[32px] p-8 shadow-lg">
 
       <div class="bg-yellow-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
         <i data-lucide="truck" class="w-8 h-8 text-yellow-600"></i>
@@ -403,7 +398,7 @@
       <ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
 
         <li>✔ System Repair</li>
-        <li>✔ Virus Removal</li>
+        <li>✔ Software support</li>
         <li>✔ Hardware Support</li>
 
       </ul>
@@ -464,8 +459,8 @@
       </div>
 
       <p class="text-gray-400">
-        Trusted labour supply and home services
-        across Thrissur and Kerala.
+        Trusted labours for home services
+        across Thrissur and Ernakulam.
       </p>
 
     </div>
@@ -506,7 +501,7 @@
 
         <p>Plumbing</p>
         <p>Electrical</p>
-        <p>Tree Cutting</p>
+        <p>Painting</p>
         <p>Desktop Repair</p>
 
       </div>
@@ -526,7 +521,7 @@
 
         <p>📞 +91 9539169197</p>
 
-        <p>✉️ info@orukai.in</p>
+        <!--p>✉️ info@orukai.in</p-->
 
       </div>
 
