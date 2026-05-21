@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" class="dark">
 
@@ -10,17 +9,17 @@
 
   <!-- SEO -->
   <title>
-    Get Free Quotation | Orukai Labour & Home Services Kerala
+    Get Free Quotation | Orukai Contract & Home Services Thrissur & Ernakulam
   </title>
 
   <meta
     name="description"
-    content="Request a free quotation for painting, plumbing, electrical work, labour supply, and PC technical services in 20KM radius Irinjalakuda."
+    content="Request a free quotation for painting, plumbing, electrical work, Contract supply, and PC technical services in 20KM radius Irinjalakuda."
   />
 
   <meta
     name="keywords"
-    content="quotation Kerala, labour quotation Thrissur, plumbing quotation Kerala, electrical services quote, Orukai quotation"
+    content="Painting thrissur, workers, Painting Ernakulam,Contract quotation Thrissur, plumbing quotation Thrissur, electrical services quote, Orukai quotation"
   />
 
   <meta name="author" content="Orukai Services" />
@@ -30,7 +29,7 @@
 
   <meta
     property="og:description"
-    content="Request quotations for labour and home services across Kerala."
+    content="Request quotations for Contract and home services across Thrissur."
   />
 
   <meta
@@ -113,7 +112,7 @@
         </h1>
 
         <p class="text-xs text-gray-500 dark:text-gray-400">
-          Trusted Kerala Services
+          Trusted Thrissur Services
         </p>
       </div>
 
@@ -143,14 +142,6 @@
       </a>
 
     </div>
-
-    <!-- DARK MODE -->
-    <button
-      onclick="toggleDarkMode()"
-      class="bg-gray-200 dark:bg-slate-700 p-3 rounded-xl"
-    >
-      <i id="themeIcon" data-lucide="moon"></i>
-    </button>
 
   </div>
 
@@ -447,7 +438,7 @@
 
       <p class="text-gray-400">
         Trusted Contract Works and Home services
-        across Thrissur and Kerala.
+        across Thrissur and Thrissur.
       </p>
 
     </div>
@@ -508,7 +499,7 @@
 
         <p>📞 +91 9539169197</p>
 
-        <p>✉️ info@orukai.in</p>
+        <!--p>✉️ info@orukai.in</p-->
 
       </div>
 
@@ -531,9 +522,7 @@
   target="_blank"
   class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl z-50"
 >
-
-  <i data-lucide="message-circle"></i>
-
+  <img src="wh.png" alt="WhatsApp Logo" class="w-8 h-8">
 </a>
 
 <!-- JS -->
@@ -554,7 +543,7 @@
     updateThemeIcon();
   }
 
-  // ICON
+  // UPDATE ICON
   function updateThemeIcon() {
 
     const icon =
@@ -574,7 +563,7 @@
     lucide.createIcons();
   }
 
-  // LOAD THEME
+  // LOAD SAVED THEME
   if (
     localStorage.getItem('theme') === 'dark'
   ) {
@@ -587,7 +576,7 @@
     updateThemeIcon();
   };
 
-  // ICONS
+  // LOAD ICONS
   lucide.createIcons();
 
   // SUPABASE
@@ -639,11 +628,13 @@
 
     };
 
+    // SAVE TO SUPABASE
     const { data, error } =
     await client
     .from('bookings')
     .insert([quotationData]);
 
+    // ERROR
     if (error) {
 
       console.log(error);
@@ -655,17 +646,51 @@
       submitBtn.innerText =
       'Submit Quotation Request';
 
-    } else {
-
-      alert(
-        'Quotation request submitted successfully!'
-      );
-
-      form.reset();
-
-      submitBtn.innerText =
-      'Submit Quotation Request';
+      return;
     }
+
+    // SEND EMAIL
+    try {
+const response = await fetch(
+  'https://yyupffimvilzvvzfnoow.supabase.co/functions/v1/send-booking-email',
+  {
+    method: 'POST',
+
+    headers: {
+
+      'Content-Type': 'application/json',
+
+      Authorization:
+        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl5dXBmZmltdmlsenZ2emZub293Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg2ODQzNjQsImV4cCI6MjA5NDI2MDM2NH0.Voh7nQTxyUXLL7E_RkQpUCzgwbnIf3jeKNS0Ikp-dDw',
+
+    },
+
+    body: JSON.stringify(quotationData),
+
+  }
+);
+
+const result = await response.json();
+
+console.log(result);
+
+    } catch (emailError) {
+
+      console.log(
+        'Email error:',
+        emailError
+      );
+    }
+
+    // SUCCESS
+    alert(
+      'Quotation request submitted successfully!'
+    );
+
+    form.reset();
+
+    submitBtn.innerText =
+    'Submit Quotation Request';
 
   });
 
