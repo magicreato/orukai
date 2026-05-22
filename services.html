@@ -145,6 +145,28 @@
 
     </div>
 
+    <!-- MOBILE MENU BUTTON -->
+    <button
+      id="mobileMenuToggle"
+      type="button"
+      class="md:hidden inline-flex items-center justify-center p-2 rounded-full text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-slate-800 transition"
+      onclick="toggleMobileMenu()"
+      aria-label="Toggle navigation menu"
+      aria-expanded="false"
+    >
+      <i data-lucide="menu" id="mobileMenuIcon" class="w-6 h-6"></i>
+    </button>
+
+  </div>
+
+  <div id="mobileMenu" class="hidden md:hidden bg-white/95 dark:bg-slate-900/95 border-t border-gray-200 dark:border-slate-800">
+    <div class="px-6 py-4 space-y-3 font-semibold">
+      <a href="index.html" class="block hover:text-yellow-500">Home</a>
+      <a href="about.html" class="block hover:text-yellow-500">About</a>
+      <a href="services.html" class="block hover:text-yellow-500">Services</a>
+      <a href="quotation.html" class="block hover:text-yellow-500">Quotation</a>
+      <a href="contact.html" class="block hover:text-yellow-500">Contact</a>
+    </div>
   </div>
 
 </nav>
@@ -566,6 +588,25 @@
       }
 
     });
+  }
+
+  // MOBILE MENU
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const icon = document.getElementById('mobileMenuIcon');
+    const isOpen = !menu.classList.contains('hidden');
+
+    if (isOpen) {
+      menu.classList.add('hidden');
+      icon.setAttribute('data-lucide', 'menu');
+      document.getElementById('mobileMenuToggle').setAttribute('aria-expanded', 'false');
+    } else {
+      menu.classList.remove('hidden');
+      icon.setAttribute('data-lucide', 'x');
+      document.getElementById('mobileMenuToggle').setAttribute('aria-expanded', 'true');
+    }
+
+    lucide.createIcons();
   }
 
   // ICON
