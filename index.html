@@ -8,7 +8,7 @@
 
   <!-- SEO -->
   <title>
-    Orukai Services | Trusted Labour for Home Services in Thrissur
+    Orukai Services | Trusted Labour for Houses & Offices in Thrissur & Ernakulam
   </title>
 
   <meta
@@ -154,6 +154,28 @@
 
     </div>
 
+    <!-- MOBILE MENU BUTTON -->
+    <button
+      id="mobileMenuToggle"
+      type="button"
+      class="md:hidden inline-flex items-center justify-center p-2 rounded-full text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-slate-800 transition"
+      onclick="toggleMobileMenu()"
+      aria-label="Toggle navigation menu"
+      aria-expanded="false"
+    >
+      <i data-lucide="menu" id="mobileMenuIcon" class="w-6 h-6"></i>
+    </button>
+
+  </div>
+
+  <div id="mobileMenu" class="hidden md:hidden bg-white/95 dark:bg-slate-900/95 border-t border-gray-200 dark:border-slate-800">
+    <div class="px-6 py-4 space-y-3 font-semibold">
+      <a href="index.html" class="block hover:text-yellow-500">Home</a>
+      <a href="about.html" class="block hover:text-yellow-500">About</a>
+      <a href="services.html" class="block hover:text-yellow-500">Services</a>
+      <a href="quotation.html" class="block hover:text-yellow-500">Quotation</a>
+      <a href="contact.html" class="block hover:text-yellow-500">Contact</a>
+    </div>
   </div>
 
 </nav>
@@ -167,22 +189,22 @@
     <div>
 
       <p class="uppercase tracking-widest font-bold text-yellow-700 mb-4">
-        Labour Supply & Home Services
+        Trusted Labours for Home & Office
       </p>
 
       <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
 
-        Trusted Labour &
-        Home Services
-        in <span class="text-yellow-600">Thrissur</span>
+        Trusted Labour for
+        Home & Office
+        in <span class="text-yellow-600">Thrissur & Ernakulam</span>
 
       </h1>
 
       <p class="text-lg text-gray-700 mb-8 leading-relaxed">
 
-        Professional plumbing, electrical,
-        outdoor farm work, pickup services
-        and technical support across Kerala.
+        Professional Painting, Plumbing, Electrical,
+        Pickup Services and Desktop Services
+        Across Thrissur & Ernakulam.
 
       </p>
 
@@ -237,7 +259,7 @@
 
       <!--img
         src="hero.jpg"
-        alt="Labour Services Kerala"
+        alt="Services Kerala"
         class="rounded-[40px] shadow-2xl w-full object-cover"
       /-->
 
@@ -470,10 +492,11 @@
 
       <div class="space-y-3 text-gray-400">
 
+        <p>Painting</p>
         <p>Plumbing</p>
         <p>Electrical</p>
-        <p>Tree Cutting</p>
         <p>Pickup & Drop</p>
+        <p>Desktop & Laptop Services & Support</p>
 
       </div>
 
@@ -515,11 +538,30 @@
   target="_blank"
   class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl z-50"
 >
-  <img src="wh.png" alt="WhatsApp Logo" class="w-8 h-8">
+  <img src="Wh.png" alt="WhatsApp Logo" class="w-8 h-8">
 </a>
 
 <!-- JS -->
 <script>
+
+  // MOBILE MENU
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const icon = document.getElementById('mobileMenuIcon');
+    const isOpen = !menu.classList.contains('hidden');
+
+    if (isOpen) {
+      menu.classList.add('hidden');
+      icon.setAttribute('data-lucide', 'menu');
+      document.getElementById('mobileMenuToggle').setAttribute('aria-expanded', 'false');
+    } else {
+      menu.classList.remove('hidden');
+      icon.setAttribute('data-lucide', 'x');
+      document.getElementById('mobileMenuToggle').setAttribute('aria-expanded', 'true');
+    }
+
+    lucide.createIcons();
+  }
 
   // DARK MODE
   function toggleDarkMode() {
@@ -539,21 +581,19 @@
   // ICON CHANGE
   function updateThemeIcon() {
 
-    const icon =
-    document.getElementById('themeIcon');
+    const icon = document.getElementById('themeIcon');
 
-    if (
-      document.documentElement.classList.contains('dark')
-    ) {
-
-      icon.setAttribute('data-lucide', 'sun');
-
-    } else {
-
-      icon.setAttribute('data-lucide', 'moon');
+    if (icon) {
+      if (document.documentElement.classList.contains('dark')) {
+        icon.setAttribute('data-lucide', 'sun');
+      } else {
+        icon.setAttribute('data-lucide', 'moon');
+      }
     }
 
-    lucide.createIcons();
+    if (window.lucide && typeof lucide.createIcons === 'function') {
+      lucide.createIcons();
+    }
   }
 
   // LOAD THEME
